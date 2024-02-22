@@ -1,0 +1,10 @@
+<h1>All lists</h1>
+
+<% if @lists.empty? %>
+  <p>No lists yet...</p>
+<% else %>
+  <% @lists.each do |list| %>
+    <%= render 'list', list: list %>
+  <% end %>
+<% end %>
+<%= link_to "Add list", new_list_path %>
