@@ -1,0 +1,104 @@
+#show-container {
+  width: auto;
+  // margin: 20px auto;
+}
+
+.show-banner {
+  height: 60vh;
+  background-image: asset-url("background-classic-film.jpg");
+  background-size: cover;
+  background-position-y: 70%;
+  background-color: rgba(28, 28, 28, 0.8);
+  background-blend-mode: overlay;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+  }
+
+  h2 {
+    font-size: 18px;
+    color: rgb(225, 225, 225);
+    font-weight: normal;
+    font-style: italic;
+    text-shadow: 1px 1px 2px black;
+  }
+}
+
+.movie-grid {
+  width: 60%;
+  margin: 10px auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.movie-card {
+  padding: 10px;
+  box-shadow: 0 2px 2px 3px rgb(227, 227, 227);
+  border-radius: 3px;
+  display: flex;
+  align-items: start;
+
+  p {
+    padding: 3px;
+    margin: 5px 0;
+    color: rgba(3, 3, 93, 1.0);
+    font-weight: bold;
+  }
+
+  a {
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.movie-card-image {
+  width: 30%;
+  height: 200px;
+  object-fit: cover;
+  background-position-y: 40%;
+  background-color: rgba(28, 28, 28, 0.8);
+  background-blend-mode: overlay;
+  box-shadow: 0 2px 3px 2px grey;
+}
+
+.movie-card-content {
+  padding: 0 10px;
+  margin: 6px 0;
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    color: rgba(3, 3, 93, 1.0);
+    font-weight: bolder;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .movie-header {
+    font-size: 12px;
+    color: rgba(3, 3, 93, 1.0);
+    font-weight: bold;
+  }
+
+  .movie-text {
+    color: rgb(71, 71, 71);
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+  }
+}

@@ -1,1 +1,8 @@
-<%= link_to list.name, list_path(list) %>
+<div class="list-card">
+  <div class="list-card-title">
+    <h1><%= link_to list.name, list_path(list) %></h1>
+  </div>
+  <p><i class="fa-solid fa-film"></i>
+    <%= render 'lists/movie_count', list: list %>
+  </p>
+</div>

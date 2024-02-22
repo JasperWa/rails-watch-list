@@ -1,0 +1,36 @@
+.btn-container {
+  margin: 10px auto;
+  display: flex;
+  justify-content: right;
+
+  &.movie {
+    width: 60%;
+  }
+
+  &.list {
+    width: 80%;
+  }
+}
+
+.btn-add-new {
+  display: inline-block;
+  width: fit-content;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 3px;
+  box-shadow: 1px 2px 4px 4px lightgrey;
+
+  background-color: rgba(3, 3, 93, 0.8);
+  transition: 0.3s ease;
+
+  p {
+    margin: 0;
+    padding: 5px 8px;
+  }
+
+  &:hover {
+    background-color: rgba(3, 3, 93, 1.0);
+  }
+}

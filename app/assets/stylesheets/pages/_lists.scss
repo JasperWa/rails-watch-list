@@ -1,0 +1,67 @@
+
+#list-container {
+  width: auto;
+  // margin: 20px auto;
+}
+
+.list-banner {
+  height: 60vh;
+  background-image: asset-url("background-theater.jpg");
+  background-size: cover;
+  background-position-y: 70%;
+  background-color: rgba(28, 28, 28, 0.8);
+  background-blend-mode: overlay;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+  }
+}
+
+.list-grid {
+  width: 80%;
+  margin: 10px auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.list-card {
+  padding: 5px;
+  height: 170px;
+  box-shadow: 0 2px 2px 3px rgb(227, 227, 227);
+  border-radius: 3px;
+
+  p {
+    padding: 3px;
+    margin: 5px 0;
+    color: rgba(3, 3, 93, 1.0);
+    font-weight: bold;
+  }
+}
+
+.list-card-title {
+  height: 120px;
+  background-image: asset-url("background-theater-list.jpg");
+  background-size: cover;
+  background-position-y: 40%;
+  background-color: rgba(28, 28, 28, 0.8);
+  background-blend-mode: overlay;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+  }
+}

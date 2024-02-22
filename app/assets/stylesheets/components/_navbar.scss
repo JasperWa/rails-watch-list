@@ -10,3 +10,35 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar {
+  box-shadow: 2px 2px 2px lightgrey;
+  z-index: 1;
+}
+
+
+#movie-logo {
+  color: darkblue;
+  font-weight: 700;
+  margin: 5px 15px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+#fixed-navbar-container {
+  max-width: 100%;
+}
+
+.nav-link {
+  color: rgba(3, 3, 93, 0.6);
+  font-weight: 600;
+
+  padding: 0;
+  transition: 0.3 ease;
+
+  &:hover {
+    color: rgba(3, 3, 93, 1.0);
+  }
+}

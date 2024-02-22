@@ -1,10 +1,22 @@
-<h1>All lists</h1>
+<div id="list-container">
+  <div class="list-banner">
+    <h1>Your Watchlists</h1>
+  </div>
 
-<% if @lists.empty? %>
-  <p>No lists yet...</p>
-<% else %>
-  <% @lists.each do |list| %>
-    <%= render 'list', list: list %>
-  <% end %>
-<% end %>
+  <div class="btn-container list">
+    <%= link_to new_list_path, class: "btn-add-new" do %>
+      <p><i class="fa-solid fa-table-list"></i> Add list </p>
+    <% end %>
+  </div>
+  <div class="list-grid">
+
+    <% if @lists.empty? %>
+      <p>No lists yet...</p>
+    <% else %>
+      <% @lists.each do |list| %>
+        <%= render 'list', list: list %>
+      <% end %>
+    <% end %>
+  </div>
 <%= link_to "Add list", new_list_path %>
+</div>
