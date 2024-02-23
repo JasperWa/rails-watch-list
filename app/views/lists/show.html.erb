@@ -31,4 +31,32 @@
       </div>
     <% end %>
   </div>
+
+  <div class="reviews-container">
+    <div class="reviews-show">
+      <p>Show reviews here.</p>
+    </div>
+    <div class="reviews-new">
+      <h2>Add your review</h2>
+      <%= simple_form_for [@list, @review] do |f| %>
+        <%= f.input :content %>
+
+        <%= f.label :rating %>
+        <div class="radio-star-container" data-controller="review">
+          <%= f.collection_radio_buttons :rating, [1, 2, 3, 4, 5], :to_i, :to_i, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+            <div class="radio-star">
+              <%= b.radio_button(class: "radio-btn-star", id: "rating_#{b.object}", data: { action: "click->review#checkRating" }) %>
+              <%= b.label for: "rating_#{b.object}" do %>
+                <span class="fa fa-star radio-label-star" data-review-target="star"></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <%= f.submit %>
+      <% end %>
+
+    </div>
+  </div>
+
 </div>
