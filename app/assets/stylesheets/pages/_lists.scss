@@ -49,9 +49,9 @@
 
 .list-card-title {
   height: 120px;
-  background-image: asset-url("background-theater-list.jpg");
-  background-size: cover;
+  // background-image: asset-url("background-theater-list.jpg");
   background-position-y: 40%;
+  background-size: cover;
   background-color: rgba(28, 28, 28, 0.8);
   background-blend-mode: overlay;
 

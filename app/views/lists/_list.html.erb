@@ -1,5 +1,6 @@
 <div class="list-card">
-  <div class="list-card-title">
+  <% image_path = list.photo.attached? ? cl_image_path(list.photo.key, crop: :fill) : asset_url('background-theater-list.jpg') %>
+  <div class="list-card-title" style="background-image: url('<%= image_path %>')">
     <h1><%= link_to list.name, list_path(list) %></h1>
   </div>
   <p><i class="fa-solid fa-film"></i>
