@@ -1,0 +1,8 @@
+<div class="card-review">
+  <div class="card-review stars">
+    <% review.rating.times do %>
+      <i class="fa-solid fa-star"></i>
+    <% end %>
+  </div>
+  <p class="card-review comment"><%= review.content %></p>
+</div>
