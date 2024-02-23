@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :movies, only: %i[index]
+  get 'movies/search', to: 'movies#search'
 
   resources :lists, only: %i[index show new create] do
     resources :bookmarks, only: %i[new create]

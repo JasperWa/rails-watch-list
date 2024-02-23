@@ -25,7 +25,10 @@
             <%= link_to 'Home', lists_path, class: "nav-link" %>
           </li>
           <li class="movie-nav">
-            <%= link_to 'Movie Collection', lists_path, class: "nav-link" %>
+            <%= link_to 'Movie Collection', movies_path, class: "nav-link" %>
+          </li>
+          <li class="movie-nav">
+            <%= link_to 'Movie Search', movies_search_path, class: "nav-link" %>
           </li>
           <li class="movie-nav">
             <%= link_to 'Add watchlist', new_list_path, class: "nav-link" %>

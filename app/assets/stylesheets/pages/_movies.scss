@@ -1,0 +1,46 @@
+.movie-banner {
+  height: 60vh;
+  background-size: cover;
+  background-color: rgba(28, 28, 28, 0.8);
+  background-blend-mode: overlay;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+  }
+
+  &.search {
+    background-image: asset-url("background-clapperboard.jpg");
+    background-position-y: 50%;
+  }
+
+  &.index {
+    background-image: asset-url("background-movies.jpg");
+    background-position-y: 70%;
+  }
+}
+
+#search-movies {
+  width: 60%;
+  margin: 10px auto;
+
+  .form-label {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.movie-grid {
+  width: 80%;
+  margin: 10px auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+}

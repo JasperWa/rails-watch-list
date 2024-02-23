@@ -1,0 +1,21 @@
+<div id="movie-container">
+  <div class="movie-banner index">
+    <h1>Your Movie Collection</h1>
+  </div>
+
+  <div class="btn-container movie">
+    <%= link_to new_list_path, class: "btn-add-new" do %>
+      <p><i class="fa-solid fa-table-list"></i> Add list </p>
+    <% end %>
+  </div>
+  <div class="movie-grid">
+
+    <% if @movies.empty? %>
+      <p>No movies yet...</p>
+    <% else %>
+      <% @movies.each do |movie| %>
+        <%= render 'movie', movie: movie %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
