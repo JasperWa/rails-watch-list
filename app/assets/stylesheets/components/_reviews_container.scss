@@ -1,17 +1,77 @@
 .reviews-container {
   width: 60%;
   margin: 20px auto;
-  border-top: 1px solid darkgrey;
+  padding: 16px 0;
+  border-top: 1px solid rgb(206, 206, 206);
   display: flex;
 
+  h2 {
+    font-size: 24px;
+    color: rgba(3, 3, 93, 0.95);
+  }
 }
 
+// Format for existing reviews
 .reviews-show {
-  width: 60%;
+  flex-grow: 1;
+  margin-right: 16px;
 }
 
+.card-review {
+  margin: 0 3px;
+
+  .stars {
+    padding-top: 8px;
+  }
+
+  .star {
+    color: gold;
+    font-size: 16px;
+  }
+
+  .comment {
+    padding-left: 3px;
+    font-size: 14px;
+    color: rgb(71, 71, 71);
+
+    border-bottom: 1px solid rgba(206, 206, 206, 0.7);
+    padding-bottom: 8px;
+  }
+}
+
+// Formating for new reviews form
 .reviews-new {
   width: 40%;
+
+  label {
+    color: rgba(3, 3, 93, 0.95);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .form-control {
+    font-size: 12px;
+    border-radius: 3px;
+  }
+}
+
+.reviews-new button[type="submit"] {
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 14px;
+
+  margin-top: 10px;
+  padding: 5px 20px;
+
+  box-shadow: 0 2px 2px 3px rgb(227, 227, 227);
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(3, 3, 93, 0.8);
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: rgba(3, 3, 93, 1.0);
+  }
 }
 
 .radio-star-container {

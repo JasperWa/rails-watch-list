@@ -15,7 +15,7 @@
   }
 
   .form-select, .form-control {
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 3px;
   }
 }
@@ -23,22 +23,22 @@
 #movie-form .btn-center {
   display: flex;
   justify-content: center;
-}
 
-button[type="submit"] {
-  color: whitesmoke;
-  font-weight: 600;
-  font-size: 14px;
+  button[type="submit"] {
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 14px;
 
-  padding: 5px 20px;
+    padding: 5px 20px;
 
-  box-shadow: 0 2px 2px 3px rgb(227, 227, 227);
-  border: none;
-  border-radius: 5px;
-  background-color: rgba(3, 3, 93, 0.8);
-  transition: 0.3s ease;
+    box-shadow: 0 2px 2px 3px rgb(227, 227, 227);
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(3, 3, 93, 0.8);
+    transition: 0.3s ease;
 
-  &:hover {
-    background-color: rgba(3, 3, 93, 1.0);
+    &:hover {
+      background-color: rgba(3, 3, 93, 1.0);
+    }
   }
 }

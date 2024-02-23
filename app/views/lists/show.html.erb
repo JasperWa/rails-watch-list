@@ -60,7 +60,12 @@
           <% end %>
         </div>
 
-        <%= f.submit %>
+        <div class="btn-center">
+          <%# <%= f.submit %>
+          <%= button_tag(type: 'submit') do %>
+            <span><i class="fa-solid fa-film"></i> Add</span>
+          <% end %>
+        </div>
       <% end %>
 
     </div>
