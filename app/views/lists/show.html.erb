@@ -1,5 +1,6 @@
 <div id="show-container">
-  <div class="show-banner">
+  <% image_path = @list.photo.attached? ? cl_image_path(@list.photo.key, crop: :fill) : asset_url('background-theater-list.jpg') %>
+  <div class="show-banner" style="background-image: url('<%= image_path %>')">
     <div>
       <h1><%= @list.name %></h1>
       <h2><%= render 'lists/movie_count', list: @list %></h2>
