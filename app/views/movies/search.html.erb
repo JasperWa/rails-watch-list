@@ -1,4 +1,4 @@
-<div id="movie-container">
+<div id="movie-container" data-controller="movie-search">
   <div class="movie-banner search">
     <h1>Find Movies</h1>
   </div>
@@ -6,9 +6,12 @@
     <div class="form-group">
       <label for="movie-name" class="form-label">Enter a movie name</label>
       <div class="d-flex">
-        <input type="text" id="movie-name" class="form-control" placeholder="The Shawshank Redemption, The Godfather...">
-        <input type="submit" value="Search" class="btn btn-primary ms-2">
+        <input type="text" id="movie-name" class="form-control" placeholder="The Shawshank Redemption, The Godfather..." data-movie-search-target="movie">
+        <input type="submit" value="Search" class="btn btn-primary ms-2" data-action='movie-search#search'>
       </div>
     </div>
   </form>
+  <div id="movie-grid" data-movie-search-target="grid">
+  </div>
+
 </div>
