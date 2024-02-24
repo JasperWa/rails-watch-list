@@ -6,9 +6,9 @@ require 'json'
 require 'open-uri'
 
 puts 'Cleaning database...'
+Bookmark.destroy_all
 Movie.destroy_all
 List.destroy_all
-Bookmark.destroy_all
 
 puts 'Setting first lists and movies for database...'
 initial_lists = {
@@ -24,7 +24,7 @@ initial_lists = {
     { title: 'Some Like It Hot', imdbID: 'tt0053291', note: 'A comedy that stands the test of time, blending wit, humor, and a bit of romance.' },
     { title: 'Lawrence of Arabia', imdbID: 'tt0056172', note: 'An epic portrayal of desert adventure and the complexity of war.' },
   ],
-  'Wizarding World Wonders' => [
+  'Magical Wonders' => [
     { title: 'Harry Potter and the Sorcerer\'s Stone', imdbID: 'tt0241527', note: 'Where it all began; a magical journey of friendship, courage, and discovery.' },
     { title: 'Harry Potter and the Prisoner of Azkaban', imdbID: 'tt0304141', note: 'The series takes a dark turn, blending mystery, magic, and the importance of the past.' },
     { title: 'Fantastic Beasts and Where to Find Them', imdbID: 'tt3183660', note: 'A new take on the wizarding world, expanding the magic to 1920s America.' },
@@ -86,37 +86,61 @@ def create_movie(movie)
   new_movie.imdbID = movie[:imdbID]
 
   imdb_data = retrieve_movie(new_movie.imdbID)
-  return nil unless imdb_data['response'] == 'true' # Guard clause to only execute the rest if this is true
+  return nil unless imdb_data['Response'] == 'True' # Guard clause to only execute the rest if this is true
 
-  new_movie.year = imdb_data[:Year]
-  new_movie.overview = imdb_data[:Plot]
-  new_movie.rating = imdb_data[:imdbRating]
-  new_movie.genre = imdb_data[:Genre]
+  new_movie.year = imdb_data['Year']
+  new_movie.overview = imdb_data['Plot']
+  new_movie.rating = imdb_data['imdbRating']
+  new_movie.genre = imdb_data['Genre']
+  new_movie.poster_url = imdb_data['Poster']
   new_movie.save
+  new_movie
 end
 
 puts 'Initialising API...'
-def retrieve_movie(imdbID)
+def retrieve_movie(imdbid)
   api_keys = %w[48727053 adf1f2d7 8691812a]
+
   api_keys.each do |key|
-    url = "http://www.omdbapi.com/?i=#{imdbID}&apikey=#{key}"
+    url = "http://www.omdbapi.com/?i=#{imdbid}&apikey=#{key}"
     user_serialized = URI.open(url).read
     user = JSON.parse(user_serialized)
-    return user if user['response'] == 'true'
+    return user if user['Response'] == 'True'
   end
-  user # This will have user['response'] as false
+  return { 'Response' => 'False' } # This will have user['response'] as false
+end
+
+def create_list(name)
+  list_images = {
+    'Timeless Classics' => 'app/assets/images/movie-list-classic.jpg',
+    'Magical Wonders' => 'app/assets/images/movie-list-magic.jpg',
+    'Laugh Out Loud' => 'app/assets/images/movie-list-lol.jpg',
+    'Epic Journeys' => 'app/assets/images/movie-list-epic.jpg',
+    'Modern Blockbusters' => 'app/assets/images/movie-list-blockbuster.jpg'
+  }
+
+  new_list = List.new(name:)
+  image_io = File.open(list_images[name])
+  file_name = list_images[name].split('/')[-1]
+  new_list.photo.attach(io: image_io, filename: file_name, content_type: 'image/jpg')
+  new_list.save
+  new_list
 end
 
 initial_lists.each do |name, movies|
-  new_list = List.create(name:)
+  new_list = create_list(name)
+
   movies.each do |movie|
     new_movie = create_movie(movie)
+    puts "New movie is: #{new_movie}"
     next unless new_movie
 
+    puts "Creating new bookmark"
     bookmark = Bookmark.new
     bookmark.list = new_list
     bookmark.movie = new_movie
     bookmark.comment = movie[:note]
+    puts "New bookmark with list (#{bookmark.list}) and movie (#{bookmark.movie}) with a comment: #{bookmark.comment}"
     bookmark.save
   end
 end
