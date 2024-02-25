@@ -15,11 +15,11 @@
 
   <div class="movie-grid">
 
-    <% @list.movies.each do |movie| %>
+    <% @list.movies.order(:title).each do |movie| %>
       <% bookmark = Bookmark.where(movie: movie, list: @list).first # Returns array of length 1 so taking first element %>
 
       <div class="movie-card">
-        <%= image_tag "https://image.tmdb.org/t/p/w500/#{movie.poster_url}", alt: "Movie poster", class: "movie-card-image" %>
+        <%= image_tag movie.poster_url, alt: "Movie poster", class: "movie-card-image" %>
         <div class="movie-card-content">
           <h2><%=movie.title%></h2>
           <p><span class="movie-header">Overview </span><span class="movie-text"><%=movie.overview%></span></p>
@@ -33,11 +33,11 @@
     <% end %>
   </div>
 
-  <div class="reviews-container">
-    <div class="reviews-show">
+  <div class="reviews-container" data-controller="review">
+    <div class="reviews-show" data-review-target="reviews">
       <h2>Reviews</h2>
       <% if @reviews.length.zero? %>
-        <p>Show reviews here.</p>
+        <p id='reviews-placeholder'>No reviews available.</p>
       <% else %>
         <% @reviews.each do |review| %>
           <%= render 'reviews/review', review: review %>
@@ -50,7 +50,7 @@
         <%= f.input :content %>
 
         <%= f.label :rating %>
-        <div class="radio-star-container" data-controller="review">
+        <div class="radio-star-container">
           <%= f.collection_radio_buttons :rating, [1, 2, 3, 4, 5], :to_i, :to_i, item_wrapper_tag: false, boolean_style: :inline do |b| %>
             <div class="radio-star">
               <%= b.radio_button(class: "radio-btn-star", id: "rating_#{b.object}", data: { action: "click->review#checkRating" }) %>
@@ -63,7 +63,7 @@
 
         <div class="btn-center">
           <%# <%= f.submit %>
-          <%= button_tag(type: 'submit') do %>
+          <%= button_tag(type: 'submit', data: { action: "click->review#reviewSubmission"}) do %>
             <span><i class="fa-solid fa-film"></i> Add</span>
           <% end %>
         </div>

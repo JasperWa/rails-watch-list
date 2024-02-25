@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :transform_params, only: [:create]
 
   def index
-    @movies = Movie.all
+    @movies = Movie.order(:title)
   end
 
   def search
@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :overview)
+    params.require(:movie).permit(:title, :overview, :poster_url, :rating, :year, :genre)
   end
 
   def transform_params

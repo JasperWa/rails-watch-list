@@ -72,7 +72,7 @@
           'Content-Type': 'application/json',
           'X-CSRF-Token': this.csrfToken
         },
-        body: JSON.stringify({ movie: { title: data.Title, overview: data.Plot }})
+        body: JSON.stringify({ movie: { title: data.Title, overview: data.Plot, poster_url: data.Poster, rating: data.imdbRating, year: data.Year, genre: data.Genre }})
       });
     };
   }
